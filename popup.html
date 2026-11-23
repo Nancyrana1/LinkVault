@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LinkVault</title><link rel="stylesheet" href="styles.css"></head>
+<body class="popup">
+  <header class="popup-header"><div class="brand-mark">L</div><div class="brand-copy"><h1>LinkVault</h1><p>Your profile links, ready when you are.</p></div><button id="openSettings" class="icon-button" title="Manage profiles" aria-label="Manage profiles">⚙</button></header>
+  <main class="quick"><div class="section-title"><h2>Saved profiles</h2><span id="count" class="muted"></span></div>
+    <label class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="Search your links" aria-label="Search profiles"></label>
+    <div id="profiles" class="profiles"></div><div id="empty" class="empty hidden">No profiles yet. Add your first link in settings.</div>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+  </main>
+  <footer><span class="local-dot"></span><span>Stored on this browser</span><button id="manage">Manage profiles</button></footer>
+  <script src="popup.js"></script>
+</body></html>

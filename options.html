@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LinkVault · Manage profiles</title><link rel="stylesheet" href="styles.css"></head>
+<body class="settings">
+  <div class="dashboard">
+    <aside class="sidebar"><div class="sidebar-brand"><div class="brand-mark">L</div><span>LinkVault</span></div><div class="sidebar-label">WORKSPACE</div><a class="nav-item active" href="#profiles">◈ <span>My profiles</span></a><a class="nav-item" href="#backup">⇅ <span>Import & export</span></a><div class="sidebar-note"><span class="local-dot"></span> Your links stay in this browser</div></aside>
+    <main class="main">
+      <div class="topline"><div><p class="eyebrow">LINKVAULT WORKSPACE</p><h1>Manage your links</h1><p class="subtitle">Keep your professional identity links organized and ready to use.</p></div><div class="top-badge">Local storage <span class="local-dot"></span></div></div>
+      <section class="stats"><article class="stat-card"><span class="stat-label">SAVED PROFILES</span><strong id="count">0</strong><small>Available for quick copy and autofill</small></article><article class="stat-card accent-card"><span class="stat-label">SMART AUTOFILL</span><strong>Ready</strong><small>Suggestions appear on matching form fields</small></article></section>
+      <section class="content-grid" id="profiles">
+        <article class="surface form-surface"><div class="surface-heading"><div><p class="eyebrow">PROFILE LIBRARY</p><h2 id="formTitle">Add a profile</h2></div><span class="heading-icon">＋</span></div>
+          <form id="profileForm">
+            <input type="hidden" id="editId">
+            <label for="name">Profile name</label><input id="name" required maxlength="50" placeholder="e.g. LinkedIn">
+            <label for="url">Profile URL</label><input id="url" required type="url" placeholder="https://www.linkedin.com/in/yourname">
+            <label for="aliases">Matching aliases <span class="muted">(optional)</span></label><input id="aliases" maxlength="300" placeholder="e.g. linkedin profile, professional network">
+            <p class="field-help">Add alternate phrases websites might use to describe this link.</p>
+            <div class="form-actions"><button class="primary" type="submit" id="save">Save profile</button><button type="button" id="cancel" class="secondary hidden">Cancel</button></div>
+            <p id="message" class="message" role="status" aria-live="polite"></p>
+          </form>
+        </article>
+        <article class="surface list-surface"><div class="surface-heading"><div><p class="eyebrow">YOUR COLLECTION</p><h2>Saved profiles</h2></div><span id="listCount" class="count-pill">0 links</span></div>
+          <label class="search-wrap"><span>⌕</span><input id="filter" type="search" placeholder="Find a profile..." aria-label="Find a profile"></label>
+          <div id="profileList" class="saved-list"></div><p id="empty" class="empty hidden">Your library is empty. Add your first profile to get started.</p>
+        </article>
+      </section>
+      <section class="surface backup-surface" id="backup"><div><p class="eyebrow">PORTABILITY</p><h2>Backup your links</h2><p class="subtitle">Export a JSON backup or merge profiles from an existing LinkVault backup.</p></div><div class="backup-actions"><button id="export" class="secondary">↓ Export backup</button><label class="import-button secondary">↑ Import backup<input id="import" type="file" accept="application/json" hidden></label><button id="clear" class="danger">Delete all</button></div></section>
+      <section class="privacy-note"><span class="privacy-icon">◇</span><div><strong>Private by design</strong><p>Profiles are stored in this browser using <code>chrome.storage.local</code>. LinkVault does not need an account or a remote profile database. Website access is used by the extension to identify matching form fields.</p></div></section>
+      <footer class="page-footer">LinkVault · Version 1.0.0 · Chrome and Brave</footer>
+    </main>
+  </div>
+  <script src="options.js"></script>
+</body></html>
