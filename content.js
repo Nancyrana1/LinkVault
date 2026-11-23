@@ -55,9 +55,23 @@
     const wrapping = el.closest("label");
     if (wrapping) bits.push(wrapping.innerText || wrapping.textContent || "");
     const describedBy = (el.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
-    for (const id of describedBy) {
+    const labelledBy = (el.getAttribute("aria-labelledby") || "").split(/\s+/).filter(Boolean);
+    for (const id of [...labelledBy, ...describedBy]) {
       const node = document.getElementById(id);
       if (node) bits.push(node.innerText || node.textContent || "");
+    }
+
+    // Google Forms uses a custom question layout. Read only the title/heading
+    // inside this field's own question item, never the whole form or page.
+    if (/^(docs\.google\.com|forms\.google\.com)$/.test(location.hostname)) {
+      const question = el.closest('[role="listitem"]');
+      if (question) {
+        const titleNodes = question.querySelectorAll('.M7eMe,[role="heading"],[data-automation-id="questionTitle"]');
+        for (const node of titleNodes) {
+          const text = node.innerText || node.textContent || "";
+          if (text.trim()) bits.push(text);
+        }
+      }
     }
 
     // Deliberately do not read the entire parent/container text. Many forms
